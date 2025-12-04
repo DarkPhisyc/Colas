@@ -68,6 +68,27 @@ public class colas {
                     }
                     break;
                 case 3:
+                    System.out.println("\nModelo M/M/1/k");
+                    System.out.println("Teclea el promedio de llegadas: ");
+                    lambda = sc.nextDouble();
+                    System.out.println("Teclea el promedio de servicio: ");
+                    miu = sc.nextDouble();
+                    System.out.println("Teclea la capacidad del sistema: ");
+                    int k = sc.nextInt();
+                    p = lambda / miu;
+                    System.out.println("\nUtilizacion del sistema: " + p);
+                    double p0 = (1 - p) / (1 - Math.pow(p, k + 1));
+                    System.out.printf("Probabilidad de que el sistema este vacio: %.2f\n", p0);
+                    double pk = Math.pow(p, k) * p0;
+                    System.out.printf("Probabilidad de que el sistema este lleno: %.2f\n", pk);
+                    double l = (p * (1 - (k + 1) * Math.pow(p, k) + k * Math.pow(p, k + 1))) / ((1 - p) * (1 - Math.pow(p, k + 1)));
+                    System.out.printf("Numero promedio de clientes en el sistema: %.2f\n", l);
+                    double w = l / (lambda * (1 - pk));
+                    System.out.printf("Tiempo total en el sistema: %.2f\n", w);
+                    double wq = w - (1.0 / miu);
+                    System.out.printf("Tiempo promedio de espera en la cola: %.2f\n", wq);
+                    double lq = lambda * (1 - pk) * wq;
+                    System.out.printf("Numero promedio de clientes en la cola: %.2f\n", lq);
                     break;
                 case 4:
                     System.out.println("Saliendo...");
