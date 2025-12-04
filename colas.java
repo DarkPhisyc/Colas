@@ -45,9 +45,10 @@ public class colas {
                     System.out.println("Teclea el numero de servidores: ");
                     int c = sc.nextInt();
                     double p = lambda / (c * miu);
+                    System.out.printf("\nUtilizacion del sistema: %.2f\n", p);
                     if(p < 1) {
                         double a = lambda / miu;
-                        System.out.println("\nUtilizacion del sistema: " + p);
+                        System.out.printf("\nConstante (a): %.2f\n", a);
                         double sum = 0.0;
                         for(int n = 0; n < c; n++) {
                             sum += (Math.pow(a, n)) / factorial(n);
